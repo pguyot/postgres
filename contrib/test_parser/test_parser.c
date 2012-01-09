@@ -83,8 +83,8 @@ testprs_getlexeme(PG_FUNCTION_ARGS)
 		/* blank type */
 		type = 12;
 		/* go to the next non-white-space character */
-		while ((pst->buffer)[pst->pos] == ' ' &&
-			   pst->pos < pst->len)
+		while (pst->pos < pst->len &&
+			   (pst->buffer)[pst->pos] == ' ')
 			(pst->pos)++;
 	}
 	else
@@ -92,8 +92,8 @@ testprs_getlexeme(PG_FUNCTION_ARGS)
 		/* word type */
 		type = 3;
 		/* go to the next white-space character */
-		while ((pst->buffer)[pst->pos] != ' ' &&
-			   pst->pos < pst->len)
+		while (pst->pos < pst->len &&
+			   (pst->buffer)[pst->pos] != ' ')
 			(pst->pos)++;
 	}
 
